@@ -4,6 +4,7 @@ class Api::V1::RentalsController < ApplicationController
     #/api/v1/users/1/rentals
 
     def index
+        #if @user, user.rentals else Rental.all
         @rentals = Rental.all
         render json: @rentals 
     end
