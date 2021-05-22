@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_160802) do
     t.string "description"
     t.string "address"
     t.string "rental_type"
-    t.string "price"
+    t.float "price"
     t.string "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
