@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_160802) do
     t.date "checkout"
     t.integer "rental_id"
     t.integer "guest_id"
+    t.integer "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_160802) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
