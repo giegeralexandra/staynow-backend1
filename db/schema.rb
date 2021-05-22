@@ -16,10 +16,9 @@ ActiveRecord::Schema.define(version: 2021_05_22_160802) do
     t.string "name"
     t.string "description"
     t.string "address"
-    t.string "type"
+    t.string "rental_type"
     t.string "price"
     t.string "owner_id"
-    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -35,7 +34,6 @@ ActiveRecord::Schema.define(version: 2021_05_22_160802) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "owner_id"
-    t.integer "rating"
     t.integer "reservation_id"
     t.integer "guest_id"
     t.integer "rental_id"
