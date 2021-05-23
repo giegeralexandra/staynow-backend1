@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_secure_password
     has_many :rentals, :foreign_key => 'owner_id'
     has_many :reservations, through: :rentals
     has_many :reviews, :foreign_key => 'guest_id'

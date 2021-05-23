@@ -2,6 +2,8 @@ class Api::V1::UsersController < ApplicationController
 
 
     def index
+        @users = User.all
+        render json: @users 
     end
 
     def create
@@ -11,6 +13,14 @@ class Api::V1::UsersController < ApplicationController
             render json: @user
         else 
             render json: {error: 'User creation error'}
+        end
+    end
+
+    def update
+        if @user.update(user_params)
+            render json: @user
+        else
+            render json: {error: 'User did not update'}
         end
     end
 
@@ -25,6 +35,10 @@ class Api::V1::UsersController < ApplicationController
     end
 
     private 
+
+    def set_user
+        @user = User.find(params(:id))
+    end
 
     def user_params
         params.require(:user, :email).permit(:name)

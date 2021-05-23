@@ -11,6 +11,7 @@ class Api::V1::RentalsController < ApplicationController
 
     def create
         @rental = Rental.new(rental_params)
+        # binding.pry
         if @rental.save
             render json: @rental 
         else 

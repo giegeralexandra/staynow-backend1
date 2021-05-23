@@ -1,3 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :reservations, :rentals, :reviews, :trips
+  attributes :id, :name, :email, :reservations, :rentals, :reviews, :trips
 end
