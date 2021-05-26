@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  get '/api/v1/login', to: "sessions#create"
+  # get '/api/v1/login', to: "api/v1/sessions#create"
+  post '/api/v1/login', to: "api/v1/sessions#create"
+  delete '/api/v1/logout', to: "api/v1/sessions#destroy"
+  get '/api/v1/login', to: "api/v1/sessions#show"
+
   namespace :api do 
     namespace :v1 do 
       resources :rentals
