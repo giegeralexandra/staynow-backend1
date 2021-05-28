@@ -8,10 +8,8 @@ Rails.application.routes.draw do
   namespace :api do 
     namespace :v1 do 
       resources :rentals
-      resources :users do 
-        resources :reservations
-        resources :trips
-      end
+      resources :reservations
+      resources :trips
       resources :reviews 
     end
   end

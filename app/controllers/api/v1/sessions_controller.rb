@@ -1,11 +1,12 @@
 class Api::V1::SessionsController < ApplicationController
 
     def create
-        # byebug
+        
         @user = User.find_by(email: params[:session][:email])
         
         if @user && @user.authenticate(params[:session][:password])
             session[:user_id] = @user.id
+            byebug
             render json: @user
         else
             render json: {error: 'invalid credentials'}
