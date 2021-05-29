@@ -9,8 +9,10 @@ Rails.application.routes.draw do
     namespace :v1 do 
       resources :rentals
       resources :reservations
+      resources :rentals
       resources :trips
       resources :reviews 
+      resources :users 
     end
   end
   #namespace fetch requests will have api/v1 before each fetch request

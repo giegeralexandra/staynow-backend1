@@ -5,7 +5,8 @@ class Reservation < ApplicationRecord
     validates :checkin, :checkout, :rental_id, :guest_id, presence: true  
 
     def update_total_price 
-        (self.checkin - self.checkout)*self.rental.price
+        rental = Rental.find_by(id: self.rental_id)
+        self.total_price = (self.checkout - self.checkin)*rental.price
     end
 
 end

@@ -10,15 +10,22 @@ class Api::V1::ReservationsController < ApplicationController
     end
 
     def create
-        @reservation = @user.reservations.build(reservation_params)
-        #if rental is already reserved, cannot
-        #if user already has a rental, cannot 
-        if @reservation 
-            @reservation.update_total_price
-            render json: @reservation
-        else 
-            render json: {error: 'error creating reservation'}
-        end
+            # byebug
+            @reservation = Reservation.new(reservation_params)
+            
+            #if rental is already reserved, cannot
+            #if user already has a rental, cannot 
+            if @reservation 
+                @reservation.update_total_price
+                @reservation.save
+                # byebug
+                render json: @reservation
+            else 
+                render json: {error: 'error creating reservation'}
+            end
+        # else 
+        #     render json: {alert: "need to login"}
+        # end
 
     end
 
@@ -36,7 +43,7 @@ class Api::V1::ReservationsController < ApplicationController
     private 
 
     def set_user
-        @user = User.find(params(:guest_id))
+        @user = current_user
     end
 
     def reservation_params

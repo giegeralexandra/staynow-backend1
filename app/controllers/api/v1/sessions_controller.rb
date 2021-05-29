@@ -1,12 +1,11 @@
 class Api::V1::SessionsController < ApplicationController
 
     def create
-        
         @user = User.find_by(email: params[:session][:email])
-        
+        # byebug
         if @user && @user.authenticate(params[:session][:password])
             session[:user_id] = @user.id
-            byebug
+            # byebug
             render json: @user
         else
             render json: {error: 'invalid credentials'}
@@ -25,7 +24,7 @@ class Api::V1::SessionsController < ApplicationController
     def destroy 
         # byebug
         session.clear
-        render json: {notice: 'logged out'}
+        render json: {alert: 'logged out'}
     end
 
 end

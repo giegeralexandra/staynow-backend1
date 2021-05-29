@@ -32,6 +32,11 @@ class Api::V1::RentalsController < ApplicationController
         @rental.destroy 
     end
 
+    def reservations_create
+        @rental = Rental.find(params[:rental_id])
+        redirect_to reservation_new_path
+    end
+
     private 
 
     def set_user
