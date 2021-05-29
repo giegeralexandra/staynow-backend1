@@ -11,9 +11,9 @@ user_two = User.create(name: 'Alexandra', email:'alexandra@alexandra.com', passw
 user_three = User.create(name: 'Scott', email:'scott@scott.com', password:'scott')
 user_four = User.create(name: 'Patricia', email:'patricia@patricia.com', password:'patricia')
 
-rental = Rental.create(name: 'Cute Home', description: 'very cute house', address: '123 House Dr', rental_type: 'house', price: 250 , owner_id: 1)
-rental_two = Rental.create(name: 'Pretty Apartnment', description: 'very pretty apartment', address: '123 Apt Dr', rental_type: 'apartment', price: 100, owner_id: 2 )
-rental_three = Rental.create(name: 'Nice Townhome', description: 'very nice townhouse', address: '123 Townhouse Dr', rental_type: 'townhouse', price: 350, owner_id: 2 )
+rental = Rental.create(name: 'Cute Home', description: 'very cute house', address: '123 House Dr', rental_type: 'house', price: 250 , owner_id: 1, image: 'house.jpg')
+rental_two = Rental.create(name: 'Pretty Apartnment', description: 'very pretty apartment', address: '123 Apt Dr', rental_type: 'apartment', price: 100, owner_id: 2, image: 'apt.jpg')
+rental_three = Rental.create(name: 'Nice Townhome', description: 'very nice townhouse', address: '123 Townhouse Dr', rental_type: 'townhouse', price: 350, owner_id: 2, image: 'townhouse.jpg')
 
 reservation = Reservation.create(checkin: "2021-08-07", checkout: "2021-08-09", rental_id: 1, guest_id: 3)
 reservation_two = Reservation.create(checkin: "2021-09-07", checkout: "2021-09-15", rental_id: 2, guest_id: 1)

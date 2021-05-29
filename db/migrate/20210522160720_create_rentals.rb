@@ -7,6 +7,7 @@ class CreateRentals < ActiveRecord::Migration[6.0]
       t.string :rental_type 
       t.float :price
       t.integer :owner_id
+      t.text :image
       t.timestamps
     end
   end
