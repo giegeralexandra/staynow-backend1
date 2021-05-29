@@ -39,9 +39,6 @@ class Api::V1::RentalsController < ApplicationController
 
     private 
 
-    def set_user
-        @owner = User.find(params[:owner_id])
-    end
 
     def rental_params
         params.require(:rental).permit(:name, :description, :address, :rental_type, :price, :owner_id)

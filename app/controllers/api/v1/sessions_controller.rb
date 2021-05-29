@@ -1,9 +1,16 @@
 class Api::V1::SessionsController < ApplicationController
 
+    def new 
+        if logged_in?
+            render json @user
+        end
+    end
+        
     def create
-        @user = User.find_by(email: params[:session][:email])
         # byebug
-        if @user && @user.authenticate(params[:session][:password])
+        @user = User.find_by(email: params[:email])
+        # byebug
+        if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             # byebug
             render json: @user
@@ -16,15 +23,12 @@ class Api::V1::SessionsController < ApplicationController
     def show
         if logged_in?
             render json: current_user
-        else 
-            render json: {error: "nobody logged in"}
         end
     end
 
     def destroy 
-        # byebug
         session.clear
-        render json: {alert: 'logged out'}
+        render json: {notice: 'logged out'}
     end
 
 end

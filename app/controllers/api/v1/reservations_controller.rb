@@ -5,23 +5,25 @@ class Api::V1::ReservationsController < ApplicationController
     #/api/v1/users/1/reservations
 
     def index
+        # byebug
         @reservations = @user.reservations
         render json: @reservations
     end
 
     def create
-            # byebug
-            @reservation = Reservation.new(reservation_params)
+        # byebug
+        @reservation = Reservation.new(reservation_params)
             
             #if rental is already reserved, cannot
             #if user already has a rental, cannot 
-            if @reservation 
+            if @reservation.save
                 @reservation.update_total_price
                 @reservation.save
-                # byebug
                 render json: @reservation
             else 
-                render json: {error: 'error creating reservation'}
+                @reservation.errors
+                # byebug
+                render json: {error: 'Reservation cannot be in past. Reservation cannot overlap exsiting reservation.'}
             end
         # else 
         #     render json: {alert: "need to login"}

@@ -6,6 +6,7 @@ class Reservation < ApplicationRecord
     validate :reservation_date_cannot_be_in_the_past, :checkout_cannot_be_before_checkin, :no_reservations_overlap
     
     def update_total_price 
+        # debugger
         rental = Rental.find_by(id: self.rental_id)
         self.total_price = (self.checkout - self.checkin)*rental.price
     end
