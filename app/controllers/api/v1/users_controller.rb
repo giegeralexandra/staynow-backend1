@@ -7,12 +7,16 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def create
+        # byebug
         @user = User.new(user_params)
         if @user.save
-            #session login 
-            render json: @user
+            session[:user_id] = @user.id
+            render json: @user, status: :created 
         else 
-            render json: {error: 'User creation error'}
+            resp= {
+                error: @user.errors.full_messages.to_sentence
+            }
+            render json: {error: resp}
         end
     end
 
@@ -41,7 +45,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user, :email).permit(:name)
+        params.require(:user).permit(:name, :email, :password)
 
     end
 

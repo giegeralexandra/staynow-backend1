@@ -13,7 +13,7 @@ class Api::V1::ReservationsController < ApplicationController
     def create
         # byebug
         @reservation = Reservation.new(reservation_params)
-            
+        # byebug
             #if rental is already reserved, cannot
             #if user already has a rental, cannot 
             if @reservation.save

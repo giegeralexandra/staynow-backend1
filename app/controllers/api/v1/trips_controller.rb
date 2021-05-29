@@ -5,12 +5,8 @@ class Api::V1::TripsController < ApplicationController
 
     def index
         # byebug
-        if logged_in?
-            @trips = Trip.find_by(guest_id: @user.id)
-            render json: @trips
-        else 
-            render json: {error: "nobody logged in"}
-        end
+        @trips = @user.trips   
+        render json: @trips
     end
 
     def create
@@ -34,7 +30,7 @@ class Api::V1::TripsController < ApplicationController
     end
 
     def trip_params
-        params.require(:trip).permit(:reservation_id, :rental_id, :owner_id, :guest_id)
+        params.require(:trip).permit(:reservation_id, :rental_id, :owner_id, :guest_id, :trips)
 
     end
 
