@@ -1,17 +1,12 @@
 class Api::V1::RentalsController < ApplicationController
 
-    # before_action :set_user 
-    #/api/v1/users/1/rentals
-
     def index
-        #if @user, user.rentals else Rental.all
         @rentals = Rental.all
         render json: @rentals 
     end
 
     def create
         @rental = Rental.new(rental_params)
-        # binding.pry
         if @rental.save
             render json: @rental 
         else 
@@ -25,16 +20,6 @@ class Api::V1::RentalsController < ApplicationController
     end
 
     def update 
-    end
-
-    def destroy 
-        @rental = Rental.find(params[:id])
-        @rental.destroy 
-    end
-
-    def reservations_create
-        @rental = Rental.find(params[:rental_id])
-        redirect_to reservation_new_path
     end
 
     private 

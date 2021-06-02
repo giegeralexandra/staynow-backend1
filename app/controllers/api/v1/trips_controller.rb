@@ -1,11 +1,9 @@
 class Api::V1::TripsController < ApplicationController
 
     before_action :set_user 
-    #/api/v1/users/1/reservations
 
     def index
-        # byebug
-        @trips = @user.trips   
+        @trips = @user.trips.select{ |trip| trip.checkout < Time.now}
         render json: @trips
     end
 
@@ -31,7 +29,6 @@ class Api::V1::TripsController < ApplicationController
 
     def trip_params
         params.require(:trip).permit(:reservation_id, :rental_id, :owner_id, :guest_id, :trips)
-
     end
 
 end
